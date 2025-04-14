@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { uniqueId } from 'lodash-es';
-import { CircleCheck, Trash2, Edit3 } from 'lucide-react';
+import { Plus, Trash2, Edit3 } from 'lucide-react';
 
 const App = () => {
   const [newTaskText, setTaskText] = useState('');
@@ -37,7 +37,7 @@ const App = () => {
         />
 
         <button type="submit" className="add-task__btn">
-          Добавить
+          <Plus />
         </button>
       </form>
 
@@ -48,19 +48,23 @@ const App = () => {
             id={id}
             className="task"
           >
-            <input
-              className="task__checkbox"
-              type="checkbox"
-              value={done}
-            />
-            {text}
+            <label className="task__label">
+              <input
+                className="task__checkbox"
+                type="checkbox"
+                value={done}
+              />
+              {text}
+            </label>
+
+
             <div className="task__btns">
-              <button>
-                <Edit3 size={20} className="text-blue-500 cursor-pointer" />
+              <button className="task__btn edit">
+                <Edit3 size={20} className="task__btn-icon" />
               </button>
 
-              <button>
-                <Trash2 size={20} className="text-red-500 cursor-pointer" />
+              <button className="task__btn delete">
+                <Trash2 size={20} className="task__btn-icon" />
               </button>
             </div>
           </li>
