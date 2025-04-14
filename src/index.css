@@ -4,10 +4,12 @@
   --text-secondary: #6b7280;
   --card: #ffffff;
   --border: #e5e7eb;
+  --border-raidus: 8px;
   --primary: #3b82f6;
   --primary-hover: #2563eb;
   --success: #10b981;
   --danger: #ef4444;
+  --danger-hover: #dc2626;
 }
 
 #root {
@@ -31,27 +33,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  position: relative;
 }
 
 .add-task__input {
   width: 100%;
-  max-width: 400px;
   font-size: 16px;
-  padding: 10px;
+  padding: 16px 48px 16px 16px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--border-raidus);
 }
 
 .add-task__btn {
+  position: absolute;
+  right: 8px;
   height: 100%;
-  padding: 12px;
-  margin: 4px;
-  border-radius: 8px;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-raidus);
   border: none;
   background-color: var(--primary);
   color: white;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .add-task__btn:hover {
@@ -67,6 +74,7 @@ body {
 .task {
   display: flex;
   padding: 8px;
+  border-radius: 8px;
   background-color: var(--card);
 }
 
@@ -76,28 +84,42 @@ body {
   background-color: var(--card);
 }
 
-.tasks__item:hover {
+.task:hover {
   background-color: var(--border);
 }
 
-.task__btns {
-  margin-left: auto;
-}
-
-.delete-btn {
-  background-color: var(--danger);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 4px 8px;
+.task__label {
+  align-content: center;
+  flex-grow: 1;
   cursor: pointer;
 }
 
-.edit-btn {
+.task__btn {
+  padding: 4px;
+  border-radius: var(--border-raidus);
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: transparent;
+}
+
+.task__btn-icon {
+  padding: 8px;
+  border-radius: var(--border-raidus);
+}
+
+.task__btn.edit .task__btn-icon {
   background-color: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 4px 8px;
-  cursor: pointer;
+}
+
+.task__btn.edit:hover .task__btn-icon {
+  background-color: var(--primary-hover);
+}
+
+.task__btn.delete .task__btn-icon {
+  background-color: var(--danger);
+}
+
+.task__btn.delete:hover .task__btn-icon {
+  background-color: var(--danger-hover);
 }
