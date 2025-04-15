@@ -1,14 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Form from './components/Form';
 import List from './components/List';
 import './styles/main.scss';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    console.log(tasks);
-  }, [tasks]);
 
   return (
     <>
