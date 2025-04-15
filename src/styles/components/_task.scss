@@ -30,13 +30,12 @@
   &__input {
     flex-grow: 1;
     padding: 8px;
+    font-size: 16px;
     border: 1px solid var(--border);
     border-radius: var(--border-radius);
   }
 
   &__checkbox {
     margin-right: 8px;
-    padding: 8px;
-    background-color: var(--card);
   }
 }
