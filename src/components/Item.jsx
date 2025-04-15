@@ -44,7 +44,6 @@ const Item = ({
 
   const saveEdit = (e) => {
     e.preventDefault();
-    console.log(e);
     updateTask(e,
       {
         isEdit: false,
