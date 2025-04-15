@@ -1,0 +1,42 @@
+.tasks {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.task {
+  display: flex;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: var(--card);
+  border-radius: 8px;
+
+  &:hover {
+    background-color: var(--border);
+  }
+
+  &__label {
+    align-content: center;
+    flex-grow: 1;
+    cursor: pointer;
+  }
+
+  &__form {
+    display: flex;
+    flex-grow: 1;
+    padding-right: 8px;
+  }
+
+  &__input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+  }
+
+  &__checkbox {
+    margin-right: 8px;
+    padding: 8px;
+    background-color: var(--card);
+  }
+}

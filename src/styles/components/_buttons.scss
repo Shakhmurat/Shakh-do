@@ -1,0 +1,34 @@
+.task {
+  &__btns {
+    display: flex;
+  }
+
+  &__btn {
+    display: flex;
+    padding: 0;
+    margin: 4px;
+    background-color: transparent;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+
+    &-icon {
+      padding: 8px;
+      border-radius: var(--border-radius);
+      pointer-events: none;
+    }
+
+    &:hover &-icon {
+      color: white;
+      background-color: var(--primary-hover);
+    }
+
+    &.neutral:hover &-icon {
+      background-color: var(--neutral-hover);
+    }
+
+    &.danger:hover &-icon {
+      background-color: var(--danger-hover);
+    }
+  }
+}
