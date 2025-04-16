@@ -1,34 +1,25 @@
-.task {
-  &__btns {
-    display: flex;
+.btn-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-hover);
+    color: white;
   }
 
-  &__btn {
-    display: flex;
-    padding: 0;
-    margin: 4px;
-    background-color: transparent;
-    border-radius: var(--border-radius);
-    border: none;
-    cursor: pointer;
+  &.neutral:hover {
+    background-color: var(--neutral-hover);
+  }
 
-    &-icon {
-      padding: 8px;
-      border-radius: var(--border-radius);
-      pointer-events: none;
-    }
-
-    &:hover &-icon {
-      color: white;
-      background-color: var(--primary-hover);
-    }
-
-    &.neutral:hover &-icon {
-      background-color: var(--neutral-hover);
-    }
-
-    &.danger:hover &-icon {
-      background-color: var(--danger-hover);
-    }
+  &.danger:hover {
+    background-color: var(--danger-hover);
   }
 }
