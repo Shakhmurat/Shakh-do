@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   padding: 24px;
-  margin-right: 24px;
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-header);
 
   &__logo {
     margin-right: 24px;
@@ -17,6 +18,8 @@
   }
 
   &__item {
+    display: flex;
+    align-items: center;
     margin-right: 16px;
 
     &.login_item {

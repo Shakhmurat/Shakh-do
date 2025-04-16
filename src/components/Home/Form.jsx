@@ -31,6 +31,7 @@ const Form = ({ tasks, setTasks }) => {
         placeholder="Какие планы на сегодня?"
         className="add-task__input"
         type="text"
+        name="task"
         required
         autoFocus
       />
