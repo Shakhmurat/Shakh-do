@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  margin-right: 24px;
+
+  &__logo {
+    margin-right: 24px;
+  }
+
+  &__nav {
+    flex-grow: 1;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 16px;
+
+    &.login_item {
+      margin-left: auto;
+    }
+  }
+}

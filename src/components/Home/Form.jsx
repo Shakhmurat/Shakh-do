@@ -35,7 +35,7 @@ const Form = ({ tasks, setTasks }) => {
         autoFocus
       />
 
-      <button type="submit" className="add-task__btn">
+      <button type="submit" className="btn-icon add-task__btn">
         <Plus size={20} />
       </button>
     </form>

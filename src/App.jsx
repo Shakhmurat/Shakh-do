@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import Form from './components/Form';
-import List from './components/List';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import './styles/main.scss';
 
-const App = () => {
-  const [tasks, setTasks] = useState([]);
-
-  return (
-    <>
-      <h1>Hello, Shakh do</h1>
-
-      <Form tasks={tasks} setTasks={setTasks} />
-      <List tasks={tasks} setTasks={setTasks} />
-    </>
-  );
-};
+const App = () => (
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+)
 
 export default App;

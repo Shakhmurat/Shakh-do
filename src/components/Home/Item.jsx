@@ -5,7 +5,7 @@ import {
   Check,
   X,
 } from 'lucide-react';
-import { getTaskId, getTaskIndex } from '../utils';
+import { getTaskId, getTaskIndex } from '../../utils';
 
 const Item = ({
   id,
@@ -97,7 +97,7 @@ const Item = ({
             <button
               id={`edit-${id}`}
               onClick={setEdit}
-              className="task__btn"
+              className="btn-icon task__btn"
               type="button"
             >
               <Edit3 size={20} className="task__btn-icon" />
@@ -106,7 +106,7 @@ const Item = ({
             <button
               id={`delete-${id}`}
               onClick={deleteTask}
-              className="task__btn danger"
+              className="btn-icon task__btn danger"
               type="button"
             >
               <Trash2 size={20} className="task__btn-icon" />
@@ -118,7 +118,7 @@ const Item = ({
           <>
             <button
               form={`form-${id}`}
-              className="task__btn"
+              className="btn-icon task__btn"
               type="submit"
             >
               <Check size={20} className="task__btn-icon" />
@@ -127,7 +127,7 @@ const Item = ({
             <button
               id={`cancel-${id}`}
               onClick={setEdit}
-              className="task__btn neutral"
+              className="btn-icon task__btn neutral"
               type="button"
             >
               <X size={20} className="task__btn-icon" />

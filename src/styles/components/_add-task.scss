@@ -1,9 +1,10 @@
 .add-task {
   &__form {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    margin-bottom: 16px;
   }
 
   &__input {
@@ -17,15 +18,9 @@
   &__btn {
     position: absolute;
     right: 8px;
-    display: flex;
-    align-items: center;
-    width: 32px;
-    height: 32px;
     color: white;
     background-color: var(--primary);
-    border: none;
     border-radius: 50%;
-    cursor: pointer;
 
     &:hover {
       background-color: var(--primary-hover);

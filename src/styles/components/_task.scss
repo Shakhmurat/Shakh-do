@@ -6,7 +6,7 @@
 
 .task {
   display: flex;
-  padding: 8px;
+  padding: 16px;
   margin-bottom: 8px;
   background-color: var(--card);
   border-radius: 8px;
@@ -37,5 +37,18 @@
 
   &__checkbox {
     margin-right: 8px;
+  }
+
+  &__btns {
+    display: flex;
+  }
+
+  &__btn {
+    padding: 0;
+    margin: 4px;
+
+    &-icon {
+      pointer-events: none;
+    }
   }
 }
