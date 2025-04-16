@@ -1,3 +1,17 @@
+.btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--btn-text);
+  background-color: var(--primary);
+  border: none;
+  border-radius: var(--border-radius-btn);
+
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+}
+
 .btn-icon {
   display: flex;
   justify-content: center;

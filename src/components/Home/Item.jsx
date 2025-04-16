@@ -5,7 +5,7 @@ import {
   Check,
   X,
 } from 'lucide-react';
-import { getTaskId, getTaskIndex } from '../../utils';
+import { getTaskId, getTaskIndex } from '../../utils/task';
 
 const Item = ({
   id,
@@ -85,6 +85,9 @@ const Item = ({
             className="task__input"
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
+            type="text"
+            name="editedText"
+            placeholder="Новое название задачи"
             autoFocus={isEdit}
             required
           />
