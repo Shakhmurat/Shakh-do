@@ -1,11 +1,24 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import {
+  Container,
+  Paper,
+  Title,
+  Stack,
+  TextInput,
+  PasswordInput,
+  Button,
+  Anchor,
+  Text,
+} from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { useAuth } from "../contexts/AuthContext";
 import { findUser } from "../utils/auth";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordVisibility, { toggle }] = useDisclosure(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
@@ -23,44 +36,53 @@ const Login = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleLogin}>
-      <h2 className="margin-bottom-16">С возвращением</h2>
+    <Container size={360}>
+      <Title order={2} mb="md">С возвращением</Title>
 
-      <div className="form__row">
-        <label className="form__label">Почта</label>
-        <input
-          className="form__input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          name="email"
-          required
-          placeholder="Введите почту"
-          autoFocus
-        />
+      <Paper shadow="sm" p="xl" radius="md">
+        <form className="form" onSubmit={handleLogin}>
+          <Stack>
+            <TextInput
+              label="Почта"
+              value={email}
+              onChange={(e) => setEmail(e.currentTarget.value)}
+              size="md"
+              radius="md"
+              type="email"
+              name="email"
+              withAsterisk={false}
+              required
+              placeholder="Введите почту"
+              autoFocus
+            />
 
-      </div>
-      <div className="form__row">
-        <label className="form__label">Пароль</label>
-        <input
-          className="form__input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          name="password"
-          required
-          minLength={8}
-          placeholder="Введите пароль"
-        />
-        <span className="form__hint">Не менее 8 символов</span>
-      </div>
+            <PasswordInput
+              label="Пароль"
+              value={password}
+              onChange={(e) => setPassword(e.currentTarget.value)}
+              visible={passwordVisibility}
+              onVisibilityChange={toggle}
+              size="md"
+              radius="md"
+              type="password"
+              name="password"
+              withAsterisk={false}
+              required
+              placeholder="Введите пароль"
+            />
 
-      <button className="btn form__btn">Войти</button>
+            <Button radius="xl" type="submit" mt="xs">Войти</Button>
+          </Stack>
 
-      <div className="form__row align-items-center margin-top-16">
-        <span className="form__hint">Нет аккаунта? <Link to="/register">Зарегистрироваться</Link></span>
-      </div>
-    </form>
+          <Text size="sm" mt="md">
+            Нет аккаунта?{' '}
+            <Anchor component={Link} to="/register" size="sm">
+              Зарегистрироваться
+            </Anchor>
+          </Text>
+        </form>
+      </Paper>
+    </Container>
   )
 };
 

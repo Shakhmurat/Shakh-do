@@ -11,6 +11,9 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "@mantine/core": "^7.17.4",
+    "@mantine/form": "^7.17.4",
+    "@mantine/hooks": "^7.17.4",
     "lodash-es": "^4.17.21",
     "lucide-react": "^0.488.0",
     "react": "^19.0.0",

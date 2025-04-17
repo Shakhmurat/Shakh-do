@@ -9,6 +9,7 @@
   padding: 16px;
   margin-bottom: 8px;
   background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: 8px;
 
   &:hover {
@@ -32,7 +33,7 @@
   &__input {
     flex-grow: 1;
     min-width: 0;
-    padding: 8px;
+    padding: 0 8px;
     font-size: 16px;
     border: 1px solid var(--border);
     border-radius: var(--border-radius);
