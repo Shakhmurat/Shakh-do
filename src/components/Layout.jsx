@@ -1,4 +1,13 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
+import {
+  AppShell,
+  Container,
+  Group,
+  Button,
+  Anchor,
+  Title,
+  Flex
+} from '@mantine/core';
 import { useAuth } from "../contexts/AuthContext";
 
 const Layout = () => {
@@ -11,38 +20,43 @@ const Layout = () => {
   };
 
   return (
-    <>
-      <header className="header">
-        <h1 className="header__logo">Shakh do</h1>
-        <nav className="header__nav">
-          <ul className="header__list">
-            <li className="header__item">
-              <Link to="/">Задачи</Link>
-            </li>
-            <li className="header__item login_item">
-              {user ? (
-                <Link to="/profile">Профиль</Link>
-              ) : (
-                <Link to="/login">Войти</Link>
-              )}
-            </li>
-            {user && (
-              <li className="header__item">
-                <button className="btn" onClick={handleLogout}>
+    <AppShell
+      header={{ height: 77 }}
+      footer={{ height: 58 }}
+      padding="xl"
+    >
+      <AppShell.Header p="md" className="header">
+        <Flex align="center" justify="space-between">
+          <Title mr="xl">Shakh do</Title>
+          <Group gap="md">
+            <Anchor component={Link} to="/" underline="hover">
+              Задачи
+            </Anchor>
+
+            {user ? (
+              <>
+                <Anchor component={Link} to="/profile" underline="hover">
+                  Профиль
+                </Anchor>
+                <Button radius="xl" onClick={handleLogout}>
                   Выйти
-                </button>
-              </li>
+                </Button>
+              </>
+            ) : (
+              <Anchor component={Link} to="/login" underline="hover">
+                Войти
+              </Anchor>
             )}
-          </ul>
-        </nav>
-      </header>
-      <main className="main">
+          </Group>
+        </Flex>
+      </AppShell.Header>
+      <AppShell.Main className="main">
         <Outlet />
-      </main>
-      <footer className="footer">
+      </AppShell.Main>
+      <AppShell.Footer p="md" className="footer">
         Сделано с интересом⚡
-      </footer>
-    </>
+      </AppShell.Footer>
+    </AppShell>
   )
 };
 
