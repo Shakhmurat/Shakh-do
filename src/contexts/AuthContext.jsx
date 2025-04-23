@@ -10,7 +10,7 @@ import {
   createUserWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
-import { Loader } from '@mantine/core';
+import { Loader, Center } from '@mantine/core';
 import { auth } from '../firebase';
 
 const AuthContext = createContext();
@@ -57,7 +57,11 @@ export const AuthProvider = ({ children }) => {
 
   return(
     <AuthContext.Provider value={{ user, register, login, logout }}>
-      {!loading ? children : <Loader />}
+      {!loading ? children : (
+        <Center h="100vh">
+          <Loader />
+        </Center>
+      )}
     </AuthContext.Provider>
   )
 };
