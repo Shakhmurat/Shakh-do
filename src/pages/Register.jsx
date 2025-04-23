@@ -12,30 +12,27 @@ import {
   Text,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import {
-  getUsers,
-  saveUser,
-} from "../utils/auth";
+import { useAuth } from "../contexts/AuthContext";
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordVisibility, { toggleVisibility }] = useDisclosure(false);
+  const [passwordVisibility, { toggle }] = useDisclosure(false);
+  const { register } = useAuth();
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    const users = getUsers()
-    const isExists = users.some((u) => u.email === email);
 
-    if (isExists) {
-      alert('Пользователь с такой почтой уже существует');
-      return;
+    try {
+      await register(email, password);
+      alert('Регистрация успешна!');
+      navigate('/');
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
     }
-
-    saveUser({ email, password });
-    alert('Регистрация успешна!');
-    navigate('/login');
   };
 
   return (
@@ -65,7 +62,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.currentTarget.value)}
               visible={passwordVisibility}
-              onVisibilityChange={toggleVisibility}
+              onVisibilityChange={toggle}
               size="md"
               radius="md"
               type="password"

@@ -1,23 +1,28 @@
 import { useState } from 'react';
-import { uniqueId } from 'lodash-es';
 import { Plus } from 'lucide-react';
-
+import { addTask } from '../../api/tasks';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Form = ({ tasks, setTasks }) => {
   const [newTaskText, setTaskText] = useState('');
+  const { user: { uid } } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newTask = {
-      id: uniqueId(),
       text: newTaskText,
       done: false,
       isEdit: false,
     };
 
-    setTasks([newTask, ...tasks]);
-    setTaskText('');
+    try {
+      const savedTask = await addTask(uid, newTask);
+      setTasks([savedTask, ...tasks]);
+      setTaskText('');
+    } catch (error) {
+      console.error('Ошибка при добавлении задачи:', error);
+    }
   }
 
   return(

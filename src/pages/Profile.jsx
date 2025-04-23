@@ -12,13 +12,13 @@ const Profile = () => {
   return (
     <>
       Скоро тут будет профиль и редактирование
-      <dl className="profile">
-        <dt>Email</dt>
-        <dd>{user.email}</dd>
+      <dl className="dl">
+        <dt className="dt">Email</dt>
+        <dd className="dd">{user.email}</dd>
         {user.name && (
           <>
-            <dt>Имя</dt>
-            <dd>{user.name}</dd>
+            <dt className="dt">Имя</dt>
+            <dd className="dd">{user.name}</dd>
           </>
         )}
       </dl>
