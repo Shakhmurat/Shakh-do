@@ -5,46 +5,26 @@ import {
   Check,
   X,
 } from 'lucide-react';
-import { getTaskId, getTaskIndex } from '../../utils/task';
 
 const Item = ({
   id,
   text,
   done,
   isEdit,
-  tasks,
-  setTasks,
+  setDone,
+  handleDeleteTask,
+  handleUpdateTask,
  }) => {
   const [editedText, setEditedText] = useState('');
 
-  const deleteTask = (e) => {
-    const taskId = getTaskId(e);
-    setTasks([
-      ...tasks.filter((task) => task.id !== taskId),
-    ]);
-  };
-
-  const updateTask = (e, update) => {
-    const taskId = getTaskId(e);
-    const taskIndex = getTaskIndex(tasks, taskId);
-    setTasks([
-      ...tasks.slice(0, taskIndex),
-      {
-        ...tasks[taskIndex],
-        ...update,
-      },
-      ...tasks.slice(taskIndex + 1),
-    ]);
-  };
-
   const setEdit = (e) => {
     setEditedText(text);
-    updateTask(e, { isEdit: !isEdit });
+    handleUpdateTask(e, { isEdit: !isEdit });
   };
 
   const saveEdit = (e) => {
     e.preventDefault();
-    updateTask(e,
+    handleUpdateTask(e,
       {
         isEdit: false,
         text: editedText,
@@ -52,13 +32,8 @@ const Item = ({
     );
   };
 
-  const setDone = (e) => {
-    updateTask(e, { done: e.target.checked });
-  };
-
   return (
     <li
-      key={id}
       id={id}
       className="task"
     >
@@ -108,7 +83,7 @@ const Item = ({
 
             <button
               id={`delete-${id}`}
-              onClick={deleteTask}
+              onClick={handleDeleteTask}
               className="btn-icon task__btn danger"
               type="button"
             >

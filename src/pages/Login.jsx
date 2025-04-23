@@ -13,25 +13,26 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useAuth } from "../contexts/AuthContext";
-import { findUser } from "../utils/auth";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, { toggle }] = useDisclosure(false);
-  const navigate = useNavigate();
   const { login } = useAuth();
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const user = findUser(email, password);
 
-    if (!user) {
-      alert('Пользователь не найден');
-      return
+    try {
+      await login(email, password);
+      navigate('/');
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
     }
 
-    login(user);
     navigate('/');
   };
 
