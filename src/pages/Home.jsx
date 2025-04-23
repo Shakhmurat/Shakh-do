@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { getTasks } from '../api/tasks';
 import Form from '../components/Home/Form';
@@ -8,12 +9,12 @@ const Home = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { user: { uid } } = useAuth();
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const fetchedTasks = await getTasks(uid);
+        const fetchedTasks = await getTasks(user.uid);
         setTasks(fetchedTasks);
         setLoading(false);
       } catch (error) {
@@ -24,6 +25,10 @@ const Home = () => {
 
     fetchTasks();
   }, []);
+
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <List

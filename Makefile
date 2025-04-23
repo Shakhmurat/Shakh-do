@@ -6,6 +6,3 @@ dev:
 
 lint:
 	npx eslint .
-
-deploy:
-	npm run build && gh-pages -d dist
